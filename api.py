@@ -4,7 +4,7 @@ import main
 import json
 import main
 
-app = main.app
+app = Flask(__name__)
 
 @app.route("/")
 def start_page():
@@ -85,4 +85,6 @@ def getDefaultSpreadsAndRiskPremiumsByCountry(country):
     json_data[data[0]] = answer
     print(json_data)
     return json_data
+
+app.run(host="localhost", debug=True)
 
