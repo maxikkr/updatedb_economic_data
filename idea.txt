@@ -1,0 +1,6 @@
+https://mkkrprojects.atlassian.net/jira/software/projects/SD/boards/1
+
+Migrate doker to server
+cronjobs laufen lassen
+https://www.pybootcamp.com/blog/how-to-write-dockerfile-python-apps/
+github hat eine, da kannst du einfach docker images hochladen und dann vom server aus pullen
