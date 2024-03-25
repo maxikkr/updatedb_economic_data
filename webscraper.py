@@ -58,3 +58,6 @@ def getDefaultSpreadsAndRiskPremiums():
 
 def closedbb():
     db.closedb()
+
+if __name__ == "__main__":
+    getDefaultSpreadsAndRiskPremiums()

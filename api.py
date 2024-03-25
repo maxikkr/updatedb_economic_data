@@ -85,6 +85,7 @@ def getDefaultSpreadsAndRiskPremiumsByCountry(country):
     json_data[data[0]] = answer
     print(json_data)
     return json_data
-
-app.run(host="localhost", debug=True)
+if __name__ == "__main__":
+    db.createDatabase()
+    app.run()
 

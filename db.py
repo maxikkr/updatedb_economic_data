@@ -36,11 +36,13 @@ def getDefaultSpreadsAndRiskPremiumsByCountry(country):
     output = cur.fetchone()
     return output
 
-
-config = toml.load("config.toml")
-conn = psycopg2.connect(host=config["host"], dbname=config["dbname"], user=config["user"], password=config["password"], port=config["port"])
-cur = conn.cursor()
-cur.execute("""CREATE TABLE IF NOT EXISTS country_default_spreads (country VARCHAR(255) PRIMARY KEY,
-                adj_default_spread DECIMAL, equity_risk_premium DECIMAL, country_risk_premium DECIMAL, corporate_tax_rate DECIMAL, moodys_rating VARCHAR(19),
-                sovereign_cds_spread DECIMAL, datetime timestamp)""")
-conn.commit()
+def createDatabase():
+    config = toml.load("config.toml")
+    global conn
+    global cur
+    conn = psycopg2.connect(host=config["host"], dbname=config["dbname"], user=config["user"], password=config["password"], port=config["port"])
+    cur = conn.cursor()
+    cur.execute("""CREATE TABLE IF NOT EXISTS country_default_spreads (country VARCHAR(255) PRIMARY KEY,
+                    adj_default_spread DECIMAL, equity_risk_premium DECIMAL, country_risk_premium DECIMAL, corporate_tax_rate DECIMAL, moodys_rating VARCHAR(19),
+                    sovereign_cds_spread DECIMAL, datetime timestamp)""")
+    conn.commit()
