@@ -1,0 +1,2 @@
+docker + docker compose crash course
+ne ich mach immer mit docker compose + "normalen" docker. Und da erstelle ich einfach fuer jeden microservice einen unterordner und da ist dann eine Dockerfile drinnen und im root level des repository's ist eine docker-compose.yaml in der ich die dockerfiles/ container manage
