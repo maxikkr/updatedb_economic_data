@@ -45,6 +45,4 @@ def createDatabase():
 config = toml.load("config.toml")
 conn = psycopg2.connect(host=config["host"], dbname=config["dbname"], user=config["user"], password=config["password"], port=config["port"])
 cur = conn.cursor()
-
-if __name__ == "__main__":
-    createDatabase()
+createDatabase()
