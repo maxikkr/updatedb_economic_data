@@ -56,8 +56,20 @@ def getDefaultSpreadsAndRiskPremiums():
         }
         db.addDefaultSpreadsAndRiskPremiums(data)
 
+def getTBillYield():
+    url = "https://www.worldgovernmentbonds.com/"
+    content = call_website(url)
+    table = content.find("table", {"class": "homeBondTable sortable w3-table money pd44 -f14"})
+    allTr = table.findAll("tr")
+    #for tr in allTr:
+    #    print(tr)
+    tr = allTr[2]
+    for td in tr.findAll("td"):
+        print(td.find("a"))
+
 def closedbb():
     db.closedb()
 
 if __name__ == "__main__":
-    getDefaultSpreadsAndRiskPremiums()
+    #getDefaultSpreadsAndRiskPremiums()
+    getTBillYield()

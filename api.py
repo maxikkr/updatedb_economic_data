@@ -1,5 +1,6 @@
 from flask import Flask
 import db
+from gevent.pywsgi import WSGIServer
 
 app = Flask(__name__)
 
@@ -85,4 +86,6 @@ def getDefaultSpreadsAndRiskPremiumsByCountry(country):
 if __name__ == "__main__":
     db.createDatabase()
     app.run()
+    #http_server = WSGIServer(('', 80), app)
+    #http_server_serve_forever()
 
