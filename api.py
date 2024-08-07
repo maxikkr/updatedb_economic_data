@@ -1,6 +1,9 @@
 from flask import Flask
 import db
 from gevent.pywsgi import WSGIServer
+import yfinance as yf
+import pandas as pd
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
 
@@ -83,9 +86,24 @@ def getDefaultSpreadsAndRiskPremiumsByCountry(country):
     json_data[data[0]] = answer
     print(json_data)
     return json_data
+
+@app.route("/getStockPrice/<ticker>")
+def getStockPrice(ticker: str):
+    price = yf.Ticker(ticker).info["currentPrice"]
+    data = yf.Ticker(ticker).history()
+    yesterday = (datetime.now() - timedelta(1)).strftime("%Y-%m-%d")
+    data.reset_index(inplace=True)
+    data["Date"] = data["Date"].dt.strftime("%Y-%m-%d")
+    close = data[data["Date"] == yesterday]["Close"].iloc[0]
+    change = (price / close - 1)
+    return {"currentPrice": price,
+            "change": float(change)}
+
+
 if __name__ == "__main__":
-    db.createDatabase()
-    app.run()
+    #db.createDatabase()
+    #app.run()
+    print(getStockPrice("SMCI"))
     #http_server = WSGIServer(('', 80), app)
     #http_server_serve_forever()
 

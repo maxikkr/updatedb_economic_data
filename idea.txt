@@ -1,2 +1,31 @@
 docker + docker compose crash course
 ne ich mach immer mit docker compose + "normalen" docker. Und da erstelle ich einfach fuer jeden microservice einen unterordner und da ist dann eine Dockerfile drinnen und im root level des repository's ist eine docker-compose.yaml in der ich die dockerfiles/ container manage
+kannst ja zb. probieren dein python bums in azure functions umzuschreiben, sollte sau guenstig sein
+
+irgendwann gui bauen???
+
+
+Finance Buch:
+    APIs
+        insbesondere
+            yfinance
+            nasdaq
+            für cryptos: coingecko/alphaadvantage
+    IO Library
+
+
+Scraper:
+    makrodaten
+        CPI Daten
+        FTX Kurse
+    Aktien:
+        #aktienkurs
+        #aktienchart
+        #10qs
+    Anleihen
+
+
+    wichtige Termine:
+        inflation
+        cpi
+        arbeitslosenzahlen
